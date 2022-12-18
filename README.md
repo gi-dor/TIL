@@ -1,5 +1,5 @@
 ## TIL
-Today I Learned
+Today I Learned :sunglasses:
 
 ## TIL PLAN
 + git hub 분류 별로 정리
