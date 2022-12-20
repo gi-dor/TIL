@@ -11,7 +11,7 @@ Today I Learned :sunglasses:
 
 :arrow_forward: 꾸준하게 하기
 
-:arrow_forward: git hub  정리
+:arrow_forward: github  정리
 
 :arrow_forward: 블로그에 한번 더  정리
      https://gi-dor.tistory.com/
