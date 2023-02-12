@@ -1,5 +1,5 @@
-## TIL
-Today I Learned :sunglasses:
+## IL
+I Learned :sunglasses:
 
 
 
