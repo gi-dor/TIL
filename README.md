@@ -13,5 +13,4 @@ Today I Learned :sunglasses:
 
 :arrow_forward: github  정리
 
-:arrow_forward: 블로그에 한번 더  정리
-     https://gi-dor.tistory.com/
+
