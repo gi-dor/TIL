@@ -7,7 +7,7 @@ I Learned :sunglasses:
 
 
 ## IL PLAN
-:arrow_forward: 포기하지 않기
+
 
 :arrow_forward: 꾸준하게 하기
 
