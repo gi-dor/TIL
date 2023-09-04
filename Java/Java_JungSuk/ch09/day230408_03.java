@@ -1,4 +1,4 @@
-package weekend;
+
 class Person{
 	long id;	// 주민번호
 	public boolean equals (Object obj) {
