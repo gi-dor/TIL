@@ -1,3 +1,5 @@
+package CH02;
+
 public class day230301_01 {
 
 	public static void main(String[] args) {

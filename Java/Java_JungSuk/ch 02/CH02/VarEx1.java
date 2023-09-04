@@ -1,4 +1,4 @@
-package day02;
+package CH02;
 
 import java.time.Year;
 

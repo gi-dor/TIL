@@ -1,11 +1,11 @@
-package day02;
+package ch03;
 
 public class day230131_06 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		// 형변환 연산자
-		
+
 		double d = 85.4;
 		int score = (int)d;
 		

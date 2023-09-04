@@ -1,3 +1,5 @@
+package CH02;
+
 public class dya230210_01 {
 
 	public static void main(String[] args) {
@@ -87,7 +89,7 @@ public class dya230210_01 {
 				System.out.printf("hexNum = %x, %d%n", hexNum,hexNum);
 			//	System.out.printf("binNum = %s, %d%n", Integer.toBinaryString(binNum));
 				// Exception in thread "main" java.util.MissingFormatArgumentException: Format specifier '%d'
-				// at boot/day10.dya230210_01.main(dya230210_01.java:90)
+				// at boot/day10.CH02.dya230210_01.main(CH02.dya230210_01.java:90)
 	
 	}
 

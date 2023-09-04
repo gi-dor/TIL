@@ -1,4 +1,4 @@
-package day02;
+package ch03;
 
 public class Ex3_9 {
 
