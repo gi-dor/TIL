@@ -1,5 +1,3 @@
-package CH02;
-
 import java.time.Year;
 
 public class VarEx1 {

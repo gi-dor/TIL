@@ -1,5 +1,3 @@
-package CH02;
-
 import java.util.Scanner;
 public class ScanfEx1 {
 

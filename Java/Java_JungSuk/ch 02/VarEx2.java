@@ -1,5 +1,3 @@
-package CH02;
-
 import java.util.zip.ZipEntry;
 
 public class VarEx2 {

@@ -1,5 +1,3 @@
-package day22.예제문제;
-
 public class day20230402_02 {
 
 	public static void main(String[] args) {

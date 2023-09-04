@@ -1,5 +1,3 @@
-package CH02;
-
 public class PrinftEx1 {
 
 	public static void main(String[] args) {
