@@ -1,4 +1,4 @@
-package CH06;
+package oop1;
 
 class Method{
     long a;
