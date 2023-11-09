@@ -1,4 +1,4 @@
-package oop1;
+package oop1.method;
 
 class Method{
     long a;
