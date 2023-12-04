@@ -5,6 +5,14 @@ public class StringBufferApp1 {
     public static void main(String[] args) {
 
         /**
+         * 배열은 길이 변경이 불가능하다
+         * 공간 부족시 새로운 배열을 생성해야한다
+         * 1. 새로운 배열생성
+         * 2. 기존 배열 내용 복사
+         * 3. 참조변경 (기존 배열 사용 안함)
+         */
+
+        /**
          * 문자열 저정 + 다루기
          * String 처럼 배열을 내부적으로 가지고있음
          * String 과는 다르게 내용을 변경할수 있음
