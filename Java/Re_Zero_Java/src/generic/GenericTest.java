@@ -6,7 +6,7 @@ public class GenericTest {
 
     public static void main(String[] args) {
 
-//        ArrayList list = new ArrayList();
+//      ArrayList list = new ArrayList();
         ArrayList<Integer> list = new ArrayList<Integer>();
         list.add(30); // Integer OK
         list.add(290); // list.add(new Integer(290);  에서 AUTO BOSING으로 list.add(290)
