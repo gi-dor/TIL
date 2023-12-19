@@ -1,4 +1,4 @@
-package extends00.Phone;
+package extends00;
 
 public class CastingEx {
 
@@ -14,7 +14,6 @@ public class CastingEx {
 
 //        SmartPhone sp2 =  p; // type mismatch 호환되지 않는 타입입니다. 발견: 'extends00.Phone.Phone', 필요: 'extends00.Phone.SmartPhone'
         SmartPhone sp2 = (SmartPhone) p;
-
 
         sp2.installApp();
 //        p2.installApp(); 'installApp'의 메서드 'installApp'을(를) 해결할 수 없습니다

@@ -1,4 +1,4 @@
-package extends00.Phone;
+package extends00;
 
 public class SmartPhoneEx {
 
@@ -6,8 +6,8 @@ public class SmartPhoneEx {
 
         Phone p = new Phone();
         p.name = "폰";
-         p.color = "검정";
-         p.company = "삼성";
+        p.color = "검정";
+        p.company = "삼성";
 
         System.out.println("Phone 객체 출력");
         System.out.println(p.name);

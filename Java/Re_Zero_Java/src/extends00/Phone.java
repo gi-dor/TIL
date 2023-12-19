@@ -1,4 +1,4 @@
-package extends00.Phone;
+package extends00;
 
 public class Phone {
     String name;
