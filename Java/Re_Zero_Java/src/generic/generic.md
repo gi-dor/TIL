@@ -7,32 +7,41 @@
 #### ❓ 제네릭 사용이유
 
 1. 컴파일 시점에 타입을 검사할 수 있다.
-   ```java
+
+```java
       // 제네릭 타입 사용 안 할 경우
-        public class FruitBox {
-                Object[]  t = new Object[10];
-       
-                            public void add(Object e) {
-                                    arr [position++] = e;
-                                    }
-                            public Object[] getFruit() {
-                                    return arr;
-                                    }
-                }     
-      
-      // Apple객체 담는 박스생성
-        FruitBox box = new FruitBox();
-        box.add(new Apple());
-        box.add(new Apple());
-        box.add(new Student()); // 컴파일시 타입검사가 없기 때문에 Student 객체가 문제없다고 뜸 
-        
-      // 아래 코드에서 클래스 형변환 Exception 발생함
-        for(Apple apple : box.getFruit()) {
-            System.out.println(apple.getPrice());
-            System.out.println(apple.getStock());
-            }
-      
-         ```
+public class FruitBox {
+    Object[] t = new Object[10];
+
+    public void add(Object e) {
+        arr[position++] = e;
+    }
+
+    public Object[] getFruit() {
+        return arr;
+    }
+}
+
+    // Apple 객체가 여러개 저장되어있는 배열 생성
+    Apple[] arr = {new Apple(), new Apple()};
+
+    // 배열객체를 전달해 FruitBox객체를 생성
+    FruitBox box = new FruitBox(arr);
+
+    Apple fruit1 = (Apple) box.getFruit(0);
+
+    // FruitBox의 배열객체에서  1번째 객체를 꺼내 Orange 객체로 형변환
+    // 배열객체의 1번째에서 Apple 객체가 저장되어있다
+    // 아래의 코드에서 getFruit(1)의 반환 타입이 Object이기 떄문에 Orange로 형변환 하는 코드를 작성해
+    // 컴파일시 에러가 발생하지 않는다
+    // 애플리케이션 실행시 실행시점에 클래스 형변환 Exception 이 발생한다
+
+    Orange fruit2 = (Orange) box.getFruit(1);
+
+// 형변환 까지는 에러 없이 잘되는디 
+// 실행 시점에 문제가 생김.
+
+```  
 
 2. 불필요한 클래스 형변환이 필요 없어서 성능이 향상된다 .
 
@@ -95,6 +104,58 @@ class FruitBox<T> {
     Apple apple3 = box.getFruit(2);
     Apple apple4 = box.getFruit(3);
 
+```
+
+3. 타입의 안정성을 확보할 수 있다.
+
+```java
+// 제네릭이 적용되지 않은 ArrayList 객체
+class ArrayList {
+    Object[] values = new Object[10];
+
+    public boolean add(Object o) {
+        //...........
+    }
+
+    public Object get(int index) {
+        //.............
+    }
+}
+
+    // 모든게 에러가 안남 ;;
+    ArrayList list = new ArrayList();
+// 제네릭이 적용되지 않은 ArrayList 객체에는 모든 종류의 객체를 저장하는 것이 가능하다.
+// ArrayList 객체에 특정한 타입의 객체만 저장되어 있다고 확신할 수 없다.
+// 몇번째에 어떤 객체가 저장되어 있을지 알수 없다
+                list.add("안녕");
+                        list.add("이제는 안녕.");
+                        list.add(101);
+                        list.add(new Apple());
+                        list.add(new Student());
+
+
+// 제네릭이 적용된 ArrayList
+class ArrayList<T> {
+    T[] values;
+
+    public boolean add(E e) {
+        //...........
+    }
+
+    public Object get(int index) {
+        //.............
+    }
+}
+
+    ArrayList<student> list2 = new ArrayList<>();
+        list.add("안녕2");                // 컴파일 오류
+                list.add("이제는 진짜 안녕");      // 컴파일 오류
+                list.add(101);                    // 컴파일 오류
+                list.add(new Apple());            // 컴파일 오류
+                list.add(new Student());          // 정상 
+                list.add(new Student());          // 정상 
+
+
 
 ```
 
@@ -111,7 +172,7 @@ class FruitBox<T> {
 // 소스코드에서 데이터 타입을 결정하지 않았음.
 class ArrayList<E> {
     public boolean add(E e) {
-        .........
+        //  .........
     }
 }
     ArrayList<Student> student = new ArrayList<Student>();
@@ -151,13 +212,13 @@ public class JdbcTemplate {
 
     // selectOne() 메서드의 반환 타입의 매개변수로 전달받는 RowMapper 인터페이스의 제네릭 타입과 동일 
     public static <T> T selectOne(String sql, RowMapper<T> rowMapper) {
-        ......
+        // ......
     }
 
     // selectList
     // selectList() 메서드의 반환 타입의 매개변수로 전달받는 RowMapper 인터페이스의 제네릭 타입과 동일 
     public static <T> List<T> selectList(String sql, RowMapper<T> rowMapper) {
-        ......
+        // ......
     }
 }
 
@@ -240,8 +301,6 @@ class Orange extends Fruit {
     BOX<? super Orange> box3 = new BOX<Orange>();
     BOX<? super Orange> box3 = new BOX<Apple>();   // error Apple , Student 모두  
     BOX<? super Orange> box3 = new BOX<Student>();   // error  Orange에 상위가 아님
-
-
 
 
 
