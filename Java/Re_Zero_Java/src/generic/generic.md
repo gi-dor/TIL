@@ -84,9 +84,17 @@ class FruitBox<T> {
 }
     Apple[] arr = {new Apple(), new Apple(), new Apple()};
     // FruitBox 의 T가 전부 Apple 타입으로 결정한다
-// T[] arr은 Apple[] arr로 바뀜
-// arr을 생성자의 매개변수로 전달할 때 Apple[]가 그대로 전달된다.
+    // T[] arr은 Apple[] arr로 바뀜
+    // arr을 생성자의 매개변수로 전달할 때 Apple[]가 그대로 전달된다.
     FruitBox<Apple> box = new FruitBox<>(arr);
+
+    // FruitBox에서 객체를 꺼낼시 getFruit() 메서드의 반환 타입이 T에서 Apple로 변했기 때문임
+    // 불필요한 형변환 없이 그대로 사용한다.
+    Apple apple1 = box.getFruit(0);
+    Apple apple2 = box.getFruit(1);
+    Apple apple3 = box.getFruit(2);
+    Apple apple4 = box.getFruit(3);
+
 
 ```
 
