@@ -24,11 +24,11 @@ public class If02 {
 
         if (age <= 7) {
             System.out.println("미취학 아동입니다");
-        } else if (age >= 8 && age <= 13) {
+        } else if (age <= 13) {
             System.out.println("초딩");
-        } else if (age >= 14 && age <= 16) {
+        } else if (age <= 16) {
             System.out.println("중딩");
-        } else if (age >= 17 && age <= 19) {
+        } else if (age <= 19) {
             System.out.println("고딩");
         } else {
             System.out.println("성인");
