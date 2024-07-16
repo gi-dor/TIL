@@ -8,7 +8,7 @@
     - Java SE를 기반으로 확장된 플랫폼
     - 이식 가능 , 확장 가능
     - 웹 애플리케이션 , 분산 시스템 등을 구축하는데 필요한 API와 서비스를 제공
-        - Servlet , JAP : 웹 애플리케이션 개발을 위한 기술
+        - Servlet , JSP : 웹 애플리케이션 개발을 위한 기술
         - JPA (Java Persistance API): 객체 - 관계 매핑을 위한 API
         - JMS (Java Message Service): 메세지 기반의 통신
         - Web Service : RESTful 웹 서비스 구현
@@ -36,5 +36,5 @@
           (캡슐 , 상속 , 추상화 , 다형성)
     - 자동으로 메모리 관리를 해준다
         - JVM에서 Garbage Collector이라고 불리는 데몬 쓰레드에 의해 GC(Gabage Collection)가 일어난다. GC로 인해 별도의 메모리 관리가 필요 없어
-        - 비즈니스 로직에 집중 할 수 있다
+          비즈니스 로직에 집중 할 수 있다
     
