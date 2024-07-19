@@ -197,4 +197,59 @@ SOLID 원칙
             - 리턴 타입이 동일
             - 접근제한자는 부모클래스의 메서드와 같거나 더 넓은 범위어야 한다
 - 추상화
+    - 객체에서 공통된 속성과 기능을 추찰하는것
+    - 공통속성은 변수, 상수로 , 기능은 추상메서드로 표현한다
+    - `abstract` 키워드는 주로 클래스와 메서드에 붙는다 , `미완성`이 라는 뜻을 가지고 있다
+    - 추상 클래스
+        - 추상 메서드를 1개 이상의 추상 메서드를 포함하고 있는 클래스를 의미한다
+        - 객체를 생성할수 없으며 , 상속을 통해 자식클래스에서 추상메서드를 오버라이딩을 통해 구현한다
+        - <b>멤버변수 , 메서드 , static 변수 , 생성자 , 추상메서드 모두 보유할 수 있다</b>
+       ```java
+      public abstract class Chart{
+         abstract void draw();
+         String color = green;
+         String color2 = red;
+       }
+       ```
+    - 추상 메서드
+        - 구현부가 없이 선언부만 있는 메서드
+        - 추상메서드는 구현부가 없기에 { } 대신 끝을`;`를 적어준다
+        - 메서드의 구현은 상속받은 자식클래스에서 `오버라이딩`해 메서드를 완성시킨다
+      ```java
+      abstract void attack();
+      abstract void shield();
+      ```
+    - 추상 클래스 구현
+    ```java
+        public class LineChart extends Chart {
+            
+            // 부모에게 상속받은 추상클래스 재정의
+            @Override
+            public void draw() {
+                System.out.println("그래프를 그립니다");
+            } 
+        } 
+    ```
+
 - 다형성
+    - 조상타입의 참조변수로 자손타입의 객체를 참조할 수 있다
+      ```java
+          class Tv{}
+      
+          class SmartTv extends Tv{}
+          // 기존
+          Tv t = new Tv();
+          SmartTv stv = new SmartTv();
+          
+          Tv t = new SmartTv();
+          /*
+          조상타입의 참조변수로 자손타입 인스턴스 참조
+          Tv 타입의 참조변수 t로 SmartTv 인스턴스의 모든 멤버를 사용할 순 없다
+          Tv 클래스로부터 상속받은 멤버만 사용할 수 있다
+          */
+          // 자손타입 참조변수로 조상 타입 객체를 참조할 수 없다.
+          SmartTv stv = new Tv();
+          
+       ```
+    - 오버로딩
+    - 오버라이딩
