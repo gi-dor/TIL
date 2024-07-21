@@ -3,7 +3,7 @@
 [POJO](#pojo-)<br>
 [Bean](#bean)<br>
 [Container](#continer-)<br>
-[IoC](#ioc-)<br>
+[IoC](#ioc)<br>
 [DI](#di)<br>
 [AOP](#aop)<br>
 [DAO , DTO](#dao-와-dto)<br>
