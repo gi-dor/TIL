@@ -1,9 +1,18 @@
-1.[JavaSE , JavaEE 애플리케이션 차이](#java-se-와-java-ee-애플레키이션-차이)
-2.[Java 와 C, C++](#java-와-c--c-의-차이점)
-3.[Java 장단점](#java-의-장단점)
-4.[Java 컴파일 과정](#자바-컴파일과정)
-5.[접근 제어자](#접근 제어자)
-6.[데이터 타입](#데이터 타입)
+1.[JavaSE , JavaEE 애플리케이션 차이](#java-se-와-java-ee-애플레키이션-차이)<br>
+2.[Java 와 C, C++](#java-와-c--c-의-차이점)<br>
+3.[Java 장단점](#java-의-장단점)<br>
+4.[Java 컴파일 과정](#자바-컴파일과정)<br>
+5.[접근 제어자](#접근 제어자)<br>
+6.[데이터 타입](#데이터 타입)<br>
+7.[Wrapper-calss](#wrapper-class)<br>
+8.[객체지향 5원칙 SOLID](#객체지향-설계-5원칙)_<br>
+9.[객체지향 프로그래밍 , 절차지향 프로그래밍](#객체지향-프로그래밍--절차지향-프로그래밍)<br>
+10.[객체지향](#객제지향)<br>
+11.[객체지향 특징](#객체지향-특징)<br>
+12.[인터페이스](#인터페이스-interface)<br>
+13.[인터페이스와 추상클래스의 차이점](#인터페이스와-추상-클래스의-차이점)<br>
+14.[인스턴스변수 , static변수 ](#non-static-변수--static-변수)<br>
+15.[final](#final-키워드)
 
 ### Java SE 와 Java EE 애플레키이션 차이
 
@@ -156,7 +165,7 @@ SOLID 원칙
 ### 객제지향
 
 - 객체
-    - 현실세계의 실체 및 개념을 반영하는 상태와 행위를 정의한 데이터의 집합
+    - 현실세계의 실체 및 개념을 상태 (변수) 와 행위 (메서드)로 정의한 데이터의 집합
 
 
 - 객체지향 장점
@@ -183,8 +192,10 @@ SOLID 원칙
 
 - 상속
     - 기존의 클래스로 새로운 클래스를 작성( 코드 재사용 )
-    - 자손은 조상의 모든 멤버를 상속받는다
-    - 자손은 변경은 조상에 영향을 끼치지 않는다
+    - 자손은 조상의 모든 멤버를 `상속` 받는다
+    - Java에서는 클래스의 `단일 상속`만 가능하다 , `다중상속 불가능`
+    - 자손의 변경은 조상에 영향을 끼치지 않는다
+    - 키워드 `extends`
     ```java
         class 자식클래스 extends 조상클래스 {
   
@@ -192,11 +203,11 @@ SOLID 원칙
     ```
 
 - 추상화
-    - 객체에서 공통된 속성과 기능을 추찰하는것
+    - 객체에서 공통된 속성과 기능을 추출 하는 것
     - 공통속성은 변수, 상수로 , 기능은 추상메서드로 표현한다
     - `abstract` 키워드는 주로 클래스와 메서드에 붙는다 , `미완성`이 라는 뜻을 가지고 있다
     - 추상 클래스
-        - 추상 메서드를 1개 이상의 추상 메서드를 포함하고 있는 클래스를 의미한다
+        - 1개 이상의 추상 메서드를 포함하고 있는 클래스를 의미한다
         - 객체를 생성할수 없으며 , 상속을 통해 자식클래스에서 추상메서드를 오버라이딩을 통해 구현한다
         - <b>멤버변수 , 메서드 , static 변수 , 생성자 , 추상메서드 모두 보유할 수 있다</b>
        ```java
@@ -227,6 +238,7 @@ SOLID 원칙
     ```
 
 - 다형성
+    - 하나의 객체가 여러타입을 가질수 있는것을 의미
     - 조상타입의 참조변수로 자손타입의 객체를 참조할 수 있다
       ```java
           class Tv{}
@@ -259,3 +271,263 @@ SOLID 원칙
             - 매개변수의 타입 , 갯수 , 순서가 일치
             - 리턴 타입이 동일
             - 접근제한자는 부모클래스의 메서드와 같거나 더 넓은 범위어야 한다
+
+### 인터페이스 interface
+
+- 자바에서는 클래스를 통한 다중상속은 불가능하다
+- 인터페이스를 통해 `다중상속을 지원한다`
+- 인터페이스는 다른 클래스를 작성시 기본이되는 틀을 제공하며 일종의 추상클래스를 의미한다
+- 인터페이스는 오로지 추상메서드와 , 상수만 가능하다 ( 추상클래스는 생성자 , 변수 , 메서드 추상메서드 모두가능)
+- `interface` 키워드를 사용
+- 모든변수는 상수를 사용하며 , 모든 메서드는 public abstract 이어야한다
+    - 모든 인터페이스의 공통으로 적용되므로 final , abstract는 `생략`할 수 있다
+- 자바에서는 상속과 구현을 동시에 사용 할 수 있다
+
+```java
+class 클래스이름 extends 조상클래스이름 implements 인터페이스이름 { ......
+}
+```
+
+다중상속
+
+```java
+ interface Animal {
+    public abstract void cry();
+}
+
+interface Pet {
+    public abstract void play();
+}
+
+class Cat implements Animal, Pet {
+    public void cry() {
+        System.out.println("냐옹");
+    }
+
+    public void play() {
+        System.out.println("놀자");
+    }
+}
+
+public class Sample {
+    public void main(String[] args) {
+        Cat c = new Cat();
+        c.cry();
+        c.play();
+    }
+}
+
+```
+
+```java
+interface UserRepository {
+
+    public static final int 상수이름 = 값;
+
+    void insertUser(User user);
+
+    void updateUser(User user);
+}
+
+public class UserDatabase implements UserRepository {
+
+    @Override
+    public void insertUser(User user) {
+
+    }
+
+    @Override
+    public void updateUser(User user) {
+
+    }
+}
+```
+
+### 인터페이스와 추상 클래스의 차이점
+
+| 특성        | 인터페이스 (Interface)                    | 추상 클래스 (Abstract Class)      |
+|-----------|--------------------------------------|------------------------------|
+| **다중 상속** | 여러 인터페이스를 구현할 수 있음                   | 하나의 클래스만 상속받을 수 있음           |
+| **메서드**   | 추상 메서드만 가질 수 있음 (디폴트 메서드, 정적 메서드 가능) | 추상 메서드와 일반 메서드 모두 가질 수 있음    |
+| **필드**    | `public static final` 필드만 가질 수 있음    | 모든 유형의 필드를 가질 수 있음           |
+| **키워드**   | `interface`                          | `abstract class`             |
+| **인스턴스화** | 불가능                                  | 불가능                          |
+| **목적**    | 행동의 계약을 정의하고 다중 상속을 지원               | 공통된 기본 동작을 제공하고 확장을 통해 기능 추가 |
+
+### non-static 변수 , static 변수
+
+```java
+class Card {
+    // iv
+    String kind; // 무늬
+    int number;  // 숫자
+
+    // cv
+    static int width = 100;
+    static int height = 250;
+}
+```
+
+- non-static 변수 iv
+    - 인스턴스 변수라고 불린다
+    - 객체 생성시 인스턴스 변수가 생성된다
+    - 객체마다 각각의 상태를 유지해야하는 속성의 경우 인스턴스 변수로 선언
+    - 객체가 사라지면 인스턴스 변수도 사라진다
+    - 객체 내에 각각의 공간을 유지하므로 공유 되지 않는다
+
+```java
+    public class Car {
+    // 인스턴스 변수
+    private String color;
+    private String model;
+
+    public void print() {
+        System.out.println("color : " + color" , model : " + model);
+    }
+
+    public static void main(String[] args) {
+        // 객체 생성
+        Car car1 = new Car("Red", "Honda");
+        Car car2 = new Car("Black", "BMW");
+        // 인스턴스 변수 출력
+        car1.print();
+        car2.print();
+
+        // 객체를 null로 설정해 객체를 소멸시킨다
+        car1 = null;
+
+        // NullPointerException 발생
+        car1.print();
+    }
+}
+```
+
+- static 변수 cv
+    - 클래스 변수라고 부른다
+    - 객체 내부가 아닌 별도의 공간에 생성된다
+    - 객체가 생기기 전에 이미 생성 되어있다, 객체 생성 없이 사용할 수 있다
+    - 객체가 사라져도 멤버는 사라지지 않는다
+    - 프로그램이 종료될 때 사라진다
+    - 클래스의 인스턴스들이 공통적인 값을 유지하는 속성의 경우 클래스 변수로 선언
+    - 클래스이름.클래스변수
+
+```java
+    public class Car {
+
+    // static 변수선언 cv
+    private static int carNumber = 0;
+
+    // 인스턴스 변수 iv
+    private String color;
+    private String model;
+
+    public Car(String color, String model) {
+        this.color = color;
+        this.model = model;
+        carNumber++; // 객체 생성시 carNumber 1씩 증가
+    }
+
+    public static int getCarNumber() {
+        return carNumber;
+    }
+
+    // 인스턴스 변수 값을 출력
+    public void print() {
+        System.out.println("Color: " + color + ", Model: " + model);
+    }
+
+    public static void main(String[] args) {
+
+        System.out.println("Car Number : " + Car.getCarNumber()); // 0
+
+        // 객체생성시 carNumber++;
+        Car car1 = new Car("red", "HONDA");
+
+        // iv 인스턴스 변수 출력
+        car1.print(); // Colr : red , Model : HONDA 출력
+
+        System.out.println("car1 carNumber" + Car.getCarNumber()); // 1
+
+        Car car2 = new Car("green", "SAMSUNG");
+        car2.print();
+        // carNumber는 여전히 공유된다
+        System.out.println("car2 carNumbr" + Car.getCarNumber()); // 2
+
+    }
+}
+
+```
+
+### final 키워드
+
+- final 키워드
+    - 변수나 메서드 또는 클래스가 변경이 불가능하도록 만든다
+    - final 변수 = 상수
+        - 변수와 마찬가지로 데이터를 저장할 수 있는 메모리 공간
+        - 프로그램이 실행되는 동안 저장된 데이터를 변경할 수 없다
+        - 선언과 동시에 반드시 초기화 해야한다
+    - final 메서드
+        - 해당 메서드를 오바라이딩 할수 없다
+            - 자식클래스에서 해당 메서드를 재정의 할수 없다.
+            - 상속받은 그대로 메서드를 사용해야한다
+
+```java
+class Parent {
+    // final 메서드
+    public final void show() {
+        System.out.println("parent class");
+    }
+}
+
+class Child extends Parent {
+    // 부모의 final 메서드 오버라이딩
+    public final void show() {
+        // 컴파일 오류가 발생한다
+        System.out.println("child class");
+    }
+}
+
+```
+
+### 클래스 , 인스턴스
+
+- 클래스 class
+    - 객체를 만들어 내기 위한 설계도
+    - 연관되어있는 변수와 메서드의 집합
+    - 객체를 정의
+
+- 객체 Object
+    - 클래스에 `인스턴스` 라고 부른다
+    - 객체는 모든 인스턴스를 대표하는 포괄적인 의미
+    - 실제로 존재하는것 , 사물 또는 개념
+    - oop 관점에서 클래스의 타입으로 선언되었을 때 `객체`라고 부른다
+
+- 인스턴스 Instance
+    - 설계도를 바탕으로 구현된 실체
+
+`클래스 (설계도) → ( 인스턴스화 ) → 객체 (인스턴스)`
+
+📌 Tv 클래스를 선언 → Tv 설계도를 작성
+📌 Tv 인스턴스 , 객체를 생성해야 Tv 제품을 사용할 수 있다
+
+```java
+class Tv {
+    String color = "Black";
+
+    public void On() {
+        System.out.println("전원 ON");
+    }
+
+    public void Off() {
+        System.out.println("전원 OFF");
+    }
+}
+
+class Sample {
+    public static void main(String[] args) {
+        Tv t = new TV();
+        t.On();
+        t.Off();
+    }
+}
+```
