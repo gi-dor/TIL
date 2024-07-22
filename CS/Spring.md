@@ -8,9 +8,11 @@
 [AOP](#aop)<br>
 [DAO , DTO](#dao-와-dto)<br>
 [MVC](#mvc)<br>
-[GET , POST](#get--post)
-[Maven , Gradle](#maven--gradle)
-[Scheduling](#scheduling)
+[GET , POST](#get--post)<br>
+[Maven , Gradle](#maven--gradle)<br>
+[Scheduling](#scheduling)<br>
+[MyBatis](#mybatis-)<br>
+[Mapper](#mapper-란-)
 
 ### 스프링 프레임워크
 
@@ -261,7 +263,8 @@ public class ProductService {
 
 - 특정한 시간 간격 또는 특정 시기에 메서드를 실행하기 위한 기능을 제공
 - 정기 보고서 , 일일 매출 , 주 매출 등 데이터의 동기화 반복적인 작업을 자동화 하는데 사용
-- `@Scheduled `어노테이션을 사용
+- 스프링부트 기준 `SchedulingConfig`같은 설정클래스에 `@EnableScheduling` 어노테이션을 추가
+- `@Scheduled `어노테이션을 메서드에 직접 적용
 - Cron 표현식
     - 특정시간 , 일 , 월 , 요일등 다양한 조건을 지정할 수 있다
     - 초 , 분 , 시 , 일 , 월 , 요일 , (연도)
@@ -277,3 +280,28 @@ public class ProductService {
         @Scheduled(cron = "0 0 19 15 * ?")
     
     ```
+
+### MyBatis
+
+- MyBatis는 자바와 데이터베이스의 상호작용 하기위한 SQL Mapper 프레임워크
+- 기존의 JDBC 코드를 대체하여 더 간결하고 유지보수 하기 쉬운 코드를 작성할 수 있다
+- XML 파일로 관리 할수 있어 SQL쿼리와 자바 코드의 분리가 용이하다
+    - 자동매핑
+        - SQL 쿼리 결과를 자바 객체로 자동 매핑
+        - XML 매퍼파일에서 결과 매핑을 정의해 SQL 쿼리의 결과를 특정 자바 객체에 매핑 할 수 있다
+    - 동적 SQL
+        - MyBatis는 `<if>` , `<foreach>`같은 태그를 사용해 동적 SQL을 지원한다
+
+### Mapper 란 ?
+
+`Mapper는 SQL 쿼리와 자바 메서드를 매핑하는 역할을 한다`
+
+- SQL 쿼리를 자바 메서드로 매핑하는 역할을 하는 인터페이스
+- Mapper 를 통해 SQL쿼리를 작성해 자바코드에서 호출하여 데이터베이스와 상호작용 할수 있다
+
+- XML Mapper
+    1. XML Mapper는 SQL 쿼리와 매핑을 XML 파일에 정의하는 방식
+    2. SQL 쿼리와 매핑을 정의
+- Mapper Interface
+    1. 매퍼 XML 파일에 정의된 SQL 쿼리를 호출하기 위한 인터페이스
+
