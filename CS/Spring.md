@@ -305,3 +305,16 @@ public class ProductService {
 - Mapper Interface
     1. 매퍼 XML 파일에 정의된 SQL 쿼리를 호출하기 위한 인터페이스
 
+### DTO , VO
+
+### WAS , webserver
+
+### Cookie , Session
+
+### Spring Security 사용할 떄와 사용하지 않을 때 로그인 방법차이
+
+### MySQL , JPA 차이
+
+### GET , POST , PUT , DELETE
+
+###  
