@@ -307,14 +307,219 @@ public class ProductService {
 
 ### DTO , VO
 
-### WAS , webserver
+- DTO
+    - 계층간의 데이터 전송객체
+    - 가변 객체이며 `getter , setter` 메서드가 주로 포함
+    - 접근자 메서드만 포함되며 복잡한 비즈니스 메서드는 포함되지 않는다
+
+- VO
+    - 값 객체로 , 그 자체를 표현하기 위한 객체
+    - 객체의 동일성 보다는 값의 동일성을 중요시
+    - 불변객체로 사용되며 한번 생성되면 그 상태를 변경할수 없고 , `setter` 메서드가 없다
+    - 비즈니스 로직 포함 가능
+
+### WAS , WebServer
+
+- Web Server
+    - 웹 브라우저에서 클라이언트로부터 HTTP 요청을 받아 정적인 컨텐츠를 제공 (html , css , javascript , jpg)
+
+- WAS
+    - Web Server + Web container
+    - 다양한 비즈니스 로직 처리를 요구하는 동적인 컨텐츠를 제공한다
+    - DB 데이터조회 , 저장 , 업데이트 등의 작업을 수행한다
+    - JSP , Servlet 등의 기술을 사용해 동적 웹페이지 생성
+
+### JSP , Servlet
+
+- Servlet
+    - Tomcat이 이해할수 있는 순수 Java 코드로만 이루어진 웹서버용 클래스
+    - 동적인 웹페이지를 만들 때 Java 코드 안에 HTML 태그가 삽입되는 구조
+    - Java 코드 속에 HTML 태그로 문자열`(" ")` 로 처리
+
+- JSP ( Java Server Pages)
+    - HTML 코드 속에 Java 코드가 들어가는 구조
+    - 스크립틀릿 `<% %>` 태그안에 자바 코드를 삽입
+
+`둘 모두 동적인 웹페이지를 만들거나 수행하기 위해 사용되는 기술이다`
 
 ### Cookie , Session
 
+- 웹 어플리케이션에서 클라이언트와 서버간의 상태정보를 저장,관리하기 위한 방법이다
+
+- 저장위치
+    - 쿠키 : 클라이언트 (브라우저)에 저장
+    - 세션 : 서버에 저장
+- 유효기가
+    - 쿠키 : 유효기간 , 만료시간 설정 가능
+    - 세션 : 브라우저 종료시 기본적으로 만료
+- 보안
+    - 쿠키 : 클라이언트 측에 저장되므로 위험
+    - 세션 : 서버에 저장되므로 쿠키보다는 안전
+- 용도
+    - 쿠키 : 사용자 선호도 , 덜 민감한 정보
+    - 세션 : 로그인상태 유지 , 장바구니 민감한 정보
+
+
+- 쿠키
+    - 클라이언트에서 저장되는 작은 데이터 조각
+    - 서버는 클라이언트에 쿠키를 설정할 수 있으며 , 클라이언트는 쿠키를 요청마다 서버에 전송
+    - 쿠키는 만료시간과 유효기간을 가질수 있으며 이를 통해 생존시간을 설정할 수 있다
+    - 클라이언트 측에서 저장되므로 변조나 도난의 위험이 있다
+        - 사용자 인증 , 추적 등등
+
+```
+        Cookie userCookie=new Cookie("username","JohnDoe");
+        userCookie.setMaxAge(60*60*24); // 1일 동안 유효
+        response.addCookie(userCookie);
+
+        // 쿠키 읽기
+        Cookie[]cookies=request.getCookies();
+        if(cookies!=null){
+            for(Cookie cookie:cookies){
+                if(cookie.getName().equals("username")){
+                String username=cookie.getValue();
+                    }
+            }
+        }
+
+```
+
+- 세션
+    - 서버에서 관리되는 사용자 상태 정보를 저장한다
+    - 클라이언트와 서버간의 여러 요청을 하나의 세션으로 묶어 요청간의 상태를 유지할 수 있다
+    - 세션 데이터는 서버측에 저장된다
+    - 고유한 세션ID를 가지며 , 클라이언트의 쿠키나 URL 파라미터를 통해 서버로 전달된다
+    - 서버측에 저장되므로 쿠키보다 안전하다 , 하지만 세션ID를 탈취당할 경우 보안 문제가 발생한다
+        - 로그인 상태 유지 , 장바구니 등등
+
+```
+        // 세션 생성 및 설정
+        HttpSession session=request.getSession();
+        session.setAttribute("username","JohnDoe");
+
+        // 세션 읽기 
+        HttpSession session=request.getSession(false);
+            if(session!=null){
+                String username=(String)session.getAttribute("username");
+                }
+
+        // 세션 무효화 (로그아웃 처리 )
+        HttpSession session=request.getSession(false);
+            if(session!=null){
+                session.invalidate();
+        }
+```
+
 ### Spring Security 사용할 떄와 사용하지 않을 때 로그인 방법차이
+
+- Spring Security
+    - `SecurityConfig` 클래스 설정파일과 `@EnableWebSecurity`어노테이션을 사용하여 보안을 설정
+
+```
+@Configuration
+@EnableWebSecurity
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .antMatchers("/", "/home").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin()
+                .loginPage("/login")
+                .permitAll()
+                .and()
+            .logout()
+                .permitAll();
+    }
+
+    @Bean
+    @Override
+    public UserDetailsService userDetailsService() {
+        InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
+        manager.createUser(User.withDefaultPasswordEncoder()
+            .username("user")
+            .password("password")
+            .roles("USER")
+            .build());
+        return manager;
+    }
+}
+```
+
+- 사용하지 않을 때
+    - 개발자가 모든 보안 로직을 수동으로 작성해야하고 보안에 취약점이 발생할 가능성이 높다
+    - 로그인 요청을 처리하는 컨트롤러를 작성 , 직접 사용자 인증 로직을 구현
+    - 로그인 상태를 유지하려면 세션을 관리해야한다
+    - 로그아웃을 처리하는 컨트롤러
+
+```
+@Controller
+public class LoginController {
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @PostMapping("/login")
+    public String authenticate(String username, String password, Model model) {
+        if ("user".equals(username) && "password".equals(password)) {
+            model.addAttribute("username", username);
+            return "home";
+        } else {
+            model.addAttribute("error", "Invalid username or password.");
+            return "login";
+        }
+    }
+}
+```
 
 ### MySQL , JPA 차이
 
+- 데이터베이스와 애플리케이션간의 데이터 처리를 다루는 두가지 방법이다
+- MySQL
+    - 관계형 데이터베이스 관리시스템 RDBMS 이다
+    - 데이터를 테이블 구조로 저장하고 SQL을 사용하여 데이터베이스를 관리하는데 사용
+        - 데이터를 테이블에 구조화된 방식으로 저장
+        - 데이터 삽입 , 삭제 , 수정 , 조회 작업을 SQL 쿼리를 통해 수행
+        - 트랙잭션 관리에 ACID 를 보장
+- JPA
+    - Java 애플리케이션에서 객체-관계 매핑을 위한 자바 표준 명세 이다
+    - 데이터베이스와의 상호 작용을 자바 객체와 매핑하여 SQL 쿼리대신 자바 객체를 통해 DB 작업을 수행할 수 있게한다
+        - 객체-관계매핑 : 데이터베이스 테이블과 자바 클래스 간의 매핑을 제공
+        - 엔티티 관리 : 엔티티 클래스를 통해 데이터베이스 테이블을 자바 객체로 매핑
+        - JPQL 언어를 사용하여 객체지향적인 쿼리를 작성
+        - 기본적인 CRUD 작업을 자동화 할수 있다
+
+- 정리
+    - 역할
+        - MySQL : 관계형 데이터베이스 시스템 , 데이터를 구조화된 방식으로 저장하고 SQL을 통해 관리
+        - JPA : 자바 애플리케이션에서 데이터베이스와의 상호작용을 객제치향적으로 처리할수 있는 API
+    - 사용방법
+        - MySQL : 쿼리를 직접 작성해 데이터베이스 작업을 수행
+        - JPA : 자바 객체를 통해 데이터베이스 작업을 수행하여 SQL 쿼리 대신 `JPQL` 사용
+    - 트랜잭션 관리
+        - MySQL : 트랜잭션 관리를 SQL을 통해 수동으로 수행
+        - JPA : 트랜잭션을 자동으로 관리하며 엔티티 매니저를 통해 작업을 수행
+    - 편의성
+        - MySQL : 데이터베이스와 직접 상호작용하기 때문에 유연하지만 복잡
+        - JPA : 개발자가 비즈니스 로직에 집중할 수 있도록 데이터베이스 작업을 단순화
+
 ### GET , POST , PUT , DELETE
 
-###  
+- 요청방식에 따른 타입
+    - GET : 서버로부터 데이터를 가져올 떄 사용
+        - 데이터를 조회할 떄 사용 , 특정 사용자의 정보 조회 <br><br>
+
+    - POST : 서버에 데이터를 제출할 떄 사용
+        - 새로운 데이터를 생성 , 회원가입시 새로운 사용자 생성 <br><br>
+
+    - PUT : 서버의 리소스를 업데이트 할 때 사용
+        - 사용자의 정보를 전체적으로 업데이트 할 때 <br><br>
+
+    - DELETE : 서버의 리소스를 삭제할 떄 사용
+        - 특정 사용자를 삭제할 때 
+            
