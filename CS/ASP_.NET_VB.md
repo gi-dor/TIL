@@ -1,9 +1,9 @@
-[.NET](#net)
-[ASP](#-asp)
-[ASP.NET](#aspnet)
-[VB](#vb)
-[VBScript](#vbscript)
-[요약](#요약)
+[.NET](#net)<br>
+[ASP](#asp)<br>
+[ASP.NET](#aspnet)<br>
+[VB](#vb)<br>
+[VBScript](#vbscript)<br>
+[요약](#요약)<br>
 
 ### .NET
 
@@ -22,9 +22,9 @@
 ### ASP.NET
 
 - .NET 프레임워크의 일부로 웹 애플리케이션과 , 웹 서비스를 개발하는데 사용되는 기술
-- 서버 측 로직을 처리하고 개발하는데 사용
-- 프레임워크의 일부 이므로 언어가 아닌 웹 개발을 위한 플랫폼 이라고 생각하자
-- ASP.NET에서 상태 관리는 세션 , 쿠키 등을 통해 확인할 수 있다
+- `서버 측 로직을 처리하고 개발하는데 사용`
+- 프레임워크의 일부 이므로 언어가 아닌 `웹 개발을 위한 플랫폼` 이라고 생각하자
+- ASP.NET에서 상태 관리는 `세션 , 쿠키` 등을 통해 확인할 수 있다
 - `MVC` , `Web API - RESTful API` 사용
 - ASP.NET Core
     - ASP.NET의 최신버전으로 Windows , MacOS , Linux 에서 실행가능
