@@ -14,10 +14,15 @@
 
 ### ASP
 
-- ASP는 Active Server Pages의 약자로 Microsoft 에서 개발한 서버 측 스크립트 엔진
-- `VBScript` 언어로 사용해 동적인 웹 페이지를 생성
+- ASP는 Active Server Pages의 약자로 Microsoft 에서 개발
+- `VBscript` 언어를 기반으로 HTML 문서에 코딩하여 동적인 웹 페이지를 구현하는 기술이다
+- 자바 스크립트는 `사용자` , ASP는 `서버` 측에서 실행된다
 - .NET 프레임워크로 인해 ASP.NET이 출시되었다
 - JSP 처럼 HTML 을 생성하고 클라이언트로 전송하는 시스템
+- `<% %> 로 , 이 사이에 사용된 스크립트는 서버에서 실행된다`<br><br>
+- HTML 과 ASP 차이
+    - HTML : 단순 정보를 제공하기위한 정적인 웹페이지 작성도구
+    - ASP : 은행,기업 등 회원정보 같은 DB와의 관련된 정보를 제공하기 위한 동적인 웹페이지 작성도구
 
 ### ASP.NET
 
