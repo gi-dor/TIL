@@ -30,7 +30,7 @@ function checkGuess() {
         Result.textContent = '실패 , 입력 기회 초과';
         setGameOver();
     } else {
-        Result.textContent = '틀렷습니다'
+        Result.textContent = '실패 , 입력한 숫자가 일치하지 않습니다.'
         
         if(userGuess < randomNumber) {
             lowOrHi.textContent = '입력한 값이 작습니다 큰 숫자를 입력하세요';
@@ -50,13 +50,14 @@ function checkGuess() {
 }
 
 
-// 게임 종료 후 다시 시작할 수 있는 옵션을 설정
+// 게임 종료 후 다시 시작할 수 없게 disabled 설정
 function setGameOver() {
     guessField.disabled = true; // 게임 종료 후 입력칸 비활성화
     guessSubmit.disabled = true; // 제출 버튼 비활성화
     playAgainButton.style.display = 'block'; // 재시작 버튼 표시
 }
 
+// 게임 재시작을 위해 disabled 설정 해제
 function resetGame(){
     guessCount = 1;
     count.textContent = guessCount;
