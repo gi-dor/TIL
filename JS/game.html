@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>1 ~ 100 Game </title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h2> 1 ~ 100 Random Game </h2>
+
+    <!-- 현재 턴을 보여줄 영역 추가 -->
+    <p>입력횟수 : <span class="count">1</span></p>
+      <label for="guessField">입력한 값 : </label>
+        <input type="text" id="guessField" class="guessField" />
+        <input type="submit" value="게임시작" class="guessSubmit" />
+          
+        <div class="resultParas">
+            <p class="guessNumber"></p>
+            <p class="Result"></p>
+            <p class="lowOrHiResult"></p>
+        </div>
+        <br>
+        <button class="playAgainButton">게임 재시작</button>
+    <script src="gamming.js"></script>
+</body>
+</html>
