@@ -21,9 +21,14 @@ console.log('clasList');
 
 // <section> 내부의 <ul> 요소에서 마지막 자식 요소를 가져옴
 const onion = document.querySelector('section ul').lastElementChild;
+const $onion = document.querySelector('section ul').lastElementChild;
 onion;
+$onion
+
 // calssList 접근자를 사용
 onion.classList;
+$onion.classList;
+
 
 // hidden 태그 제거
 // hidden 요소가 없기에 브라우저에서 양파를 볼 수있음
