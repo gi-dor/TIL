@@ -65,11 +65,43 @@ $hyperlink.setAttribute('href', 'https://www.google.com');
 $hyperlink
 
 
+console.log()
+console.log(' value , checked , input 요소들의 값확인 , 수정하기')
+const message = document.querySelector('input[name=message]');
+const toggle = document.querySelector('input[name=toggle]');
+
+message.value;
+message.value = '어서오시고';
+message.value;
+
+toggle.checked;
+toggle.checked = !toggle.checked;
 
 
+console.log()
+console.log(' 요소 제거 removeChild')
+
+const ul = document.querySelector('section > ul');
+ul.removeChild(onion);
+
+console.log('모든 요소 지우기')
+// while (ul.firstChild) {
+//     ul.removeChild(ul.firstChild);
+// }
+
+console.log('태그 명으로 요소 생성하기 createElement');
+
+const tomato = document.createElement('li');
+tomato.textContent = 'real Tomato';
+tomato;
 
 
+console.log(' 요소를 대상 요소안에 넣기')
+ul.appendChild(tomato);
 
-
-
-
+const vege = ['상추', '감자', '가지', '아스파라거스'];
+for (const item2 of vege) {
+    const el = document.createElement('li');
+    el.textContent = item2;
+    ul.appendChild(el);
+}
