@@ -35,6 +35,32 @@ console.log();
 console.log('---------  이벤트  객체  ---------------');
 // addEventListener 의 콜백함수의 인자에 매개변수로 포함된다
 const clickPosition = document.querySelector('#clickPosition');
+
 clickPosition.addEventListener('click', function (e) {
     console.log(e);
 })
+
+const myInput = document.querySelector('#myInput');
+
+
+console.log('-----------  focus , blur -----------')
+// 인풋 요소 등이 사용자 입력을 받을 준비된 상태
+myInput.addEventListener('focus', () => {
+    myInput.setAttribute('placeHolder', '포커스 온 된 상태');
+});
+
+
+// 포커스를 잃어 활성이 아닌 상태
+myInput.addEventListener('blur', () => {
+    myInput.setAttribute('placeHolder', '블러 된 상태');
+});
+
+console.log('----------- 인풋 요소 값이 바뀔 때 -0-------------')
+myInput.addEventListener('change', (e) => {
+    console.log(e.target.value)
+});
+
+// 키 입력
+myInput.addEventListener('keyup', (e) => {
+    console.log(e.key);
+});
