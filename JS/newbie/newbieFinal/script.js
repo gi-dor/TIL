@@ -6,7 +6,8 @@ const headerNavs = [
     {title: 'Contact', link: '#contact'},
 ];
 
-const headerNavUl = document.querySelector('.header__nav');
+const headerNavUl = document.querySelector('.header__nav ul');
+
 
 for (const nav of headerNavs) {
     // li 요소 만들기
@@ -62,6 +63,7 @@ const aboutCards = [
 // div class=about
 const aboutDiv = document.querySelector('.about');
 
+
 for (let i = 0; i < aboutCards.length; i++) {
     const card = aboutCards[i];
 
@@ -73,4 +75,41 @@ for (let i = 0; i < aboutCards.length; i++) {
     const img = document.createElement('img');
     img.classList.add('about_icon');
     img.setAttribute('src', card.img);
+
+    const h2 = document.createElement('h2');
+    h2.classList.add('about__title')
+    h2.classList.add('_' + (i + 1));
+    h2.textContent = card.title;
+
+    const p = document.createElement('p');
+    p.classList.add('about__text');
+
+    for (desc of card.descs) {
+        const word = document.createElement('div');
+        word.textContent = desc;
+        p.appendChild(word);
+    }
+
+    div.appendChild(img);
+    div.appendChild(h2);
+    div.appendChild(p);
+
+    aboutDiv.appendChild(div);
+
+}
+
+//  마우스오버
+
+currLis = document.querySelectorAll('.curriculum__list > li');
+currProgBar = document.querySelector('.curriculum__progress .bar');
+
+for (let i = 0; i < currLis.length; i++) {
+    const li = currLis[i];
+
+    li.addEventListener('mouseenter', () => {
+        currProgBar.style.width = (200 * i) + 'px';
+    });
+    li.addEventListener('mouseleave', () => {
+        currProgBar.style.width = 0;
+    });
 }
