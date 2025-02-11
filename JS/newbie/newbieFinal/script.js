@@ -76,14 +76,18 @@ for (let i = 0; i < aboutCards.length; i++) {
     img.classList.add('about_icon');
     img.setAttribute('src', card.img);
 
+    // i값 0 으로 설정해서 1씩 추가
     const h2 = document.createElement('h2');
     h2.classList.add('about__title')
     h2.classList.add('_' + (i + 1));
     h2.textContent = card.title;
 
+    // p 태그 안에 div
+    // about__text 클래스명
     const p = document.createElement('p');
     p.classList.add('about__text');
 
+    // appendChild로 밑으로 집어넣기
     for (desc of card.descs) {
         const word = document.createElement('div');
         word.textContent = desc;
@@ -98,11 +102,14 @@ for (let i = 0; i < aboutCards.length; i++) {
 
 }
 
-//  마우스오버
+//  커리큘럼 리스트 라인  마우스오버
 
 currLis = document.querySelectorAll('.curriculum__list > li');
+
+// 커리큘럼 리스트 초록색부분 progress bar
 currProgBar = document.querySelector('.curriculum__progress .bar');
 
+// 내장되어있는 mouseenter , mouseleave 사용
 for (let i = 0; i < currLis.length; i++) {
     const li = currLis[i];
 
@@ -111,5 +118,24 @@ for (let i = 0; i < currLis.length; i++) {
     });
     li.addEventListener('mouseleave', () => {
         currProgBar.style.width = 0;
+    });
+}
+
+
+// Contact
+
+// 연락처보기 , 메시지 남기기
+const contactTabs = document.querySelectorAll('input[name=contact]');
+
+// 내용들
+const contactSlideCon = document.querySelector('.contact__slide-con');
+
+
+for (let i = 0; i < contactTabs.length; i++) {
+    const $tab = contactTabs[i];
+    const marginLeft = [0, '-100vw'][i];
+
+    $tab.addEventListener('click', () => {
+        contactSlideCon.style.marginLeft = marginLeft;
     });
 }
