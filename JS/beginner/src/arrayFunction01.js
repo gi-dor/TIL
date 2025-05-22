@@ -76,6 +76,7 @@ let color = [
     {id:2, color:"파랑"},
     {id:3, color:"보라"}
 ];
+
 let idx = color.findIndex((element)=> element.color === "보라");
 console.log(idx);
 
