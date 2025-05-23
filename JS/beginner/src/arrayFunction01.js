@@ -74,7 +74,8 @@ console.log('------------  findIndex   -------------');
 let color = [
     {id:1, color:"초록"},
     {id:2, color:"파랑"},
-    {id:3, color:"보라"}
+    {id:3, color:"보라"},
+    {id:4, color:"노랑"}
 ];
 
 let idx = color.findIndex((element)=> element.color === "보라");
@@ -85,7 +86,20 @@ color.findIndex((element,idx,array) =>
 color.findIndex((element,idx,array) => console.log(array));
 
 console.log('------------  find()   -------------');
-// 찾아낸 값 그 자체를 반환한다
+// 찾아낸 값 그 자체를 반환한다 , INDEX 반환 XXXXXX
 
-let sample = color.find((element)=>element.color === "파랑");
+let sample = color.find((element)=> element.color === "파랑");
 console.log(sample);
+
+console.log('------------ filter --------------');
+// filter 함수는 조건에 맞는 모든 값들을 새로운 배열에 담아서 반환
+let filterArray = color.filter((element , idx , array) => element.id > 1);
+console.log(filterArray);
+
+console.log('-------------  slice () ---------');
+// 특정 배열을 원하는 부분만 잘라서 가져온다
+// id 값이 4 , color가 YELLOW 값을 추가
+let sliceArray = colors.slice(1,3);   //  slice(start?: number, end?: number): T[];
+
+console.log(sliceArray); // [ '파랑', '보라' ]
+
