@@ -87,9 +87,12 @@ Ex . TV를 구매했고 전원을 연결했다 → 전원On/Off 기능 , 채널�
 
 ### AWC
 
-- `Active Workspace Client`
+``` 
+Active Workspace Client 
+```
+
 - JSON 기반의 ViewModel을 활요해 데이터 바인딩 , 커스터 마이징
-- 웹의 UI를 제공하며 브라우저 환경
+- 웹의 UI를 제공하며 <strong> 브라우저 환경 </strong>
 - 사용기술로 View , ViewModel , Service
 - 주요 작업으로 UI 커스터마이징 및 경량 클라이언트 , 사용자 정의 UI와 REST 확장 가능하다
 - 모든장치 PC , 태블릿 , 모바일에서 접근이 가능하다
