@@ -4,12 +4,20 @@ import java.util.Scanner;
 
 public class ForLoopArrFinal {
     public static void main(String[] args) {
+
+        // 상품 등록 : 상품 이름과 가격을 입력받아 저장
+        // 상품 목록 : 지금까지 등록한 모든 상품의 목록을 출력한다
+        // 상품 등록 갯수 제한 5개
         Scanner scanner = new Scanner(System.in);
         int maxProducts = 5;
+        // 상품명
         String[] productNames = new String[maxProducts];
+        // 상품 가격
         int[] productPrices = new int[maxProducts];
+        // 상품 초기 등록갯수 0개
         int productCount = 0;
 
+        // 3번 종료 전까지 계속 반복
         while (true) {
             System.out.println("1. 상품 등록 | 2. 상품 목록 | 3. 종료");
             System.out.print("메뉴를 선택하세요: ");
