@@ -50,8 +50,10 @@ public class OverRef3 {
      * @return
      */
     public static int withdrawCalculate(int balance , int amount) {
-        balance -= amount;
-        System.out.println(amount + "원을 출금했습니다 , 현재 잔액 : "+balance + "원");
+        if(balance >= amount) {
+            balance -= amount;
+            System.out.println(amount + "원을 출금했습니다 , 현재 잔액 : "+balance + "원");
+        }
         return balance;
     }
 }
