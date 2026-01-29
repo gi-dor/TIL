@@ -18,6 +18,13 @@ public class MovieReview2 {
         movie2.review = "better";
         reviews[1] = movie2;
 
+        System.out.println("1.");
+        for(int i = 0; i < reviews.length; i++) {
+            System.out.println("영화제목 : " + reviews[i].title + ", 리뷰 : " + reviews[i].review);
+            System.out.println();
+        }
+
+        System.out.println("2.");
         for(MovieReview2 re : reviews) {
             System.out.println("영화제목 : " + re.title + ", 리뷰 : " + re.review);
         }
@@ -25,5 +32,6 @@ public class MovieReview2 {
         System.out.println("===========================================================");
         System.out.println("영화제목 : " + reviews[0].title + ", 리뷰 : " + reviews[0].review);
         System.out.println("영화제목 : " + movie2.title + ", 리뷰 : " + movie2.review);
+        System.out.println("===========================================================");
     }
 }
