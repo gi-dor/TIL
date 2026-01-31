@@ -3,19 +3,22 @@ package type;
 public class Method2 {
     public static void main(String[] args) {
         Student student1 = new Student();
-        initStudent(student1, "학생123", 15, 90);
+        System.out.println("student1 = " + student1);
 //        student1.name = "학생1";
 //        student1.age = 15;
 //        student1.grade = 90;
+        initStudent(student1, "학생123", 15, 90);
         printStudent(student1);
 
         Student student2 =  createStudent("학생2341111", 167, 80);
+        System.out.println("student2 = " + student2);
         printStudent(student2);
 
     }
 
     static  Student createStudent(String name , int age , int grade){
         Student student = new Student();
+        System.out.println("create Student = " + student);
         student.name = name;
         student.age = age;
         student.grade = grade;
