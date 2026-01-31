@@ -11,7 +11,8 @@ public class MethodChange2 {
     }
 
     // dataX 변수에 dataA값을 전달
-    // int dataX = dataA
+    // int dataX = dataA 값을 전달하니 dataA.value 가 아니다XXXXXXXXXXXXXXXXXXXXXXX
+    // dataA 주소값 전달하는거다!!!! 0x100 이런 주소값
     // 자바에서 변수에 값을 대입하는것은 항상 값을 복사해서 대입한다
     public static void changeReference(Data dataX) {
         dataX.value = 20;
