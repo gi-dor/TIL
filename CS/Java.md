@@ -401,7 +401,7 @@ class Card {
     private String model;
 
     public void print() {
-        System.out.println("color : " + color" , model : " + model);
+        System.out.println("color : " + color + " , model : " + model);
     }
 
     public static void main(String[] args) {
